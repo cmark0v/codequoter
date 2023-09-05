@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+$file = @ARGV[0];
+$n = @ARGV[1];
+$m = @ARGV[2];
+@d = `cat $file | head -n $m | tail -n +$n`;
+$c = `dirname $file`;
+chomp($c);
+$fname = `basename $file`;
+chomp($fname);
+$cmd = "(cd $c ; git ls-files --full-name $fname)";
+$path = `$cmd`;
+if (length($path)==0) {$path=$file}
+chomp($path);
+$i = $n;
+%types = ('sol' => 'solidity', 'pl' => 'perl', 'htm' => 'html', 'py' => 'python');
+%quotes = ('solidity' => '//', 'perl' => '#', 'javascript' => '//');
+my($end) = $file =~ m/.*\.(\w{1,6})/;
+$type = $types{$end};
+if (length($type)==0){
+    $fi = `file $file`;
+    chomp($fi);
+    my($t) =$fi=~ m/\s(\w*)\sscript/;
+    $t  =~ tr/[A-Z]/[a-z]/ ;
+    $type = $t;
+}
+$quote = $quotes{$type};
+if (length($quote)==0){ $quote = '#';}
+print "```" . $type .  "\n";
+print $quote . " File: $path\n";
+print $quote . " Lines: $n-$m\n\n";
+$is = $m . ' ';
+$sp = length($is) - 1;
+for (@d){
+    $io = $i . '                      ';
+    $ip = substr($io,0,$sp);
+    print $ip . ' ' . $_;
+    $i++;
+}
+print "```\n\n";
