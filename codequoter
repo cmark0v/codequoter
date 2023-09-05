@@ -9,6 +9,9 @@ $fname = `basename $file`;
 chomp($fname);
 $cmd = "(cd $c ; git ls-files --full-name $fname)";
 $path = `$cmd`;
+$branch = `(cd $c; git branch --show-current)`;
+chomp($branch);
+$url = `(cd $c; git  remote get-url origin|cut -d "/" -f 4-)`;
 if (length($path)==0) {$path=$file}
 chomp($path);
 $i = $n;
@@ -25,6 +28,10 @@ if (length($type)==0){
 }
 $quote = $quotes{$type};
 if (length($quote)==0){ $quote = '#';}
+chomp($url);
+my($upath) = $url =~ m/^:?(.*?\/.*?)$/;
+
+print "[[https://github.com/$upath/blob/$branch/$path". "\#L" . $n . "]]" ."\n";
 print "```" . $type .  "\n";
 print $quote . " File: $path\n";
 print $quote . " Lines: $n-$m\n\n";
