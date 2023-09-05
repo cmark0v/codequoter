@@ -1,7 +1,7 @@
 # CODEQUOTER
 
 
-codequoter is a command line utility made to produce file-path referenced line numbered code quotes for markdown documents referencing code under version control in a git repository
+codequoter is a command line utility made to produce file-path referenced line numbered automatically typed code quotes for markdown documents referencing code under version control in a git repository
 
 it is meant to be the brains behind helpful plugins for vim and other editors 
 
