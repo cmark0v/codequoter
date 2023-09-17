@@ -30,7 +30,7 @@ $quote = $quotes{$type};
 if (length($quote)==0){ $quote = '#';}
 chomp($url);
 my(@upath) = $url =~ m/^(https:\/\/|http:\/\/|git\@).*?[\/:](.*?\/.*?)(\.git)?$/;
-print "[[https://github.com/$upath[1]/blob/$branch/$path". "\#L" . $n . "]]" ."\n";
+print "[$path Line $n](https://github.com/$upath[1]/blob/$branch/$path". "\#L" . $n . ")" ."\n";
 print "```" . $type .  "\n";
 print $quote . " File: $path\n";
 print $quote . " Lines: $n-$m\n\n";
