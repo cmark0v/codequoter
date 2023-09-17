@@ -5,6 +5,9 @@ codequoter is a command line utility made to produce file-path referenced line n
 
 it is meant to be the brains behind helpful plugins for vim and other editors 
 
+## env vars
+
+- ``NONUM``  - set to not print hard coded line numbers
 
 usage ``codequoter <file> line1 line2``
 
