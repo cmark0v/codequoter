@@ -10,14 +10,16 @@ usage ``codequoter <file> line1 line2``
 
 example output ``./codequoter codequoter 8 10``:
 
+
+
+[https://github.com/cmark0v/codequoter/blob/master/codequoter#L8](codequoter Line 8)
 ```perl
 # File: codequoter
-# Lines: 8-10
+# Lines: 8-11
 
 8  $fname = `basename $file`;
 9  chomp($fname);
 10 $cmd = "(cd $c ; git ls-files --full-name $fname)";
+11 $path = `$cmd`;
 ```
-
-
 

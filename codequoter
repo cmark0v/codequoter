@@ -11,7 +11,7 @@ $cmd = "(cd $c ; git ls-files --full-name $fname)";
 $path = `$cmd`;
 $branch = `(cd $c; git branch --show-current)`;
 chomp($branch);
-$url = `(cd $c; git  remote get-url origin|cut -d "/" -f 4-)`;
+$url = `(cd $c; git  remote get-url origin)`;
 if (length($path)==0) {$path=$file}
 chomp($path);
 $i = $n;
@@ -29,9 +29,8 @@ if (length($type)==0){
 $quote = $quotes{$type};
 if (length($quote)==0){ $quote = '#';}
 chomp($url);
-my($upath) = $url =~ m/^:?(.*?\/.*?)$/;
-
-print "[[https://github.com/$upath/blob/$branch/$path". "\#L" . $n . "]]" ."\n";
+my(@upath) = $url =~ m/^(https:\/\/|http:\/\/|git\@).*?[\/:](.*?\/.*?)(\.git)?$/;
+print "[https://github.com/$upath[1]/blob/$branch/$path". "\#L" . $n . "]($path Line $n)" ."\n";
 print "```" . $type .  "\n";
 print $quote . " File: $path\n";
 print $quote . " Lines: $n-$m\n\n";
@@ -40,7 +39,11 @@ $sp = length($is) - 1;
 for (@d){
     $io = $i . '                      ';
     $ip = substr($io,0,$sp);
-    print $ip . ' ' . $_;
+    if ($ENV{'NONUM'}){
+        print $_;
+    }else{
+        print $ip . ' ' . $_;
+    }
     $i++;
 }
 print "```\n\n";
