@@ -12,7 +12,7 @@ example output ``./codequoter codequoter 8 10``:
 
 
 
-[https://github.com/cmark0v/codequoter/blob/master/codequoter#L8](codequoter Line 8)
+[[https://github.com/cmark0v/codequoter/blob/master/codequoter#L8]]
 ```perl
 # File: codequoter
 # Lines: 8-11
