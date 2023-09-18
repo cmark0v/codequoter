@@ -10,14 +10,14 @@ it attempts to autmatically generate link to code lines quoted and identify file
 ## env vars
 
 - ``NONUM``  - set to not print hard coded line numbers
+- ``NOREF`` - set to not insert comment reference to file
 
 usage ``codequoter <file> line1 line2``
 
 example output ``./codequoter codequoter 8 10``:
 
 
-
-[codequoter Line 8](https://github.com/cmark0v/codequoter/blob/master/codequoter#L8)
+[codequoter Line 8 of cmark0v/codequoter ``master``](https://github.com/cmark0v/codequoter/blob/master/codequoter#L8)
 ```perl
 # File: codequoter
 # Lines: 8-11
