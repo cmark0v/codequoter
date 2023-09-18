@@ -5,7 +5,7 @@ codequoter is a command line utility made to produce file-path referenced line n
 
 it is meant to be the brains behind helpful plugins for vim and other editors 
 
-it attempts to autmatically generate link to code lines quoted and identify file for proper highlighting
+it attempts to autmatically generate link to code lines quoted and identify file type for proper highlighting. optionally adds un explicit line numbering. also adds in comments with reference details
 
 ## env vars
 
