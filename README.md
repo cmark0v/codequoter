@@ -11,6 +11,7 @@ it attempts to autmatically generate link to code lines quoted and identify file
 
 - ``NONUM``  - set to not print hard coded line numbers
 - ``NOREF`` - set to not insert comment reference to file
+- ``BLOB`` - use blob link rather than commit hash
 
 usage ``codequoter <file> line1 line2``
 
